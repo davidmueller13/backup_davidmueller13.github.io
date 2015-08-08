@@ -21,7 +21,9 @@ ROM flashen,Stockfirmware flashen etc.)</li>
 <li>Wissen über Linux-Distros (Bedienung des Terminals,Installation
 von Paketen etc.)<br>
 </li>
-<li>Grundlegende Kenntnisse in Terminal-Syntax,Make-Syntax,C,C++,Java</li>
+<li>Grundlegende Kenntnisse in Terminal-Syntax,Make-Syntax,C,C++,Java
+und xml<br>
+</li>
 <li>Mit Google gut zurecht kommen :)</li>
 <li>Github beherschen<br>
 </li>
@@ -63,7 +65,7 @@ style="color: rgb(218, 0, 0); font-style: italic;"><br>
 g++-multilib gcc-multilib lib32ncurses5-dev lib32readline-gplv2-dev
 lib32z1-dev</code><br>
 <br>
-Die rot markierten Pakete unter 64-bit Distributionen.#<br>
+Die rot markierten Pakete unter 64-bit Distributionen.<br>
 Bei Java wird Version 6 für Android 4.4&gt; und Version 7 für Android
 &lt;=5.0 empfohlen.Allerdings sollte dies abwärtskompatibel sein.<br>
 <br>
@@ -140,11 +142,24 @@ https://android.googlesource.com/platform/manifest<br>
 ein -b dran und anschließend den Namen vom Zweig der jeweiligen
 Version(Bsp;CyanogenMod Android 4.4=cm-11,5.1=cm-12.1).<br>
 Nun findet ihr einen Ordner (versteckte Dateien mit STRG+H einblenden)
-names .repo<br>
-<code><span class="str"></span></code><br>
-<code><span class="str"><br>
-</span></code><br>
+names .repo.<br>
+Dort findet ihr das default manifest,in dem alle "Bestandteile"
+deklariert sind,die heruntergeladen werden.<br>
 <br>
+Der Einfachheit halber könnt ihr es so lassen,wie es ist oder einige
+(für euch) unnötige Sachen entfernen(Downloadgröße wird reduziert.<br>
+U. a. entfernen könnt ihr,wenn ihr unter Linux arbeitet,alle Einträge
+mit ...darwin...,Docs,Samples,Generic,Goldfish...<br>
+Außerdem könnt ihr,wenn überhaupt eingetragen,unter Hardware die Sachen
+löschen,die euer Gerät nicht betreffen(z.B ihr habt ein
+Qualcommgerät,könnt ihr Einträge mit<code><span class="str"></span></code>
+Intel,Exynos etc. löschen.<br>
+<br>
+Dann mit repo sync (mit -jx könnt ihr die Anzahl der gleichzeitigen
+Downloads festlegen,x durch eine Zahl ersetzen,Standard ist ebenfalls
+im Manifest festgelegt) die Sourcen herunterladen.<br>
+<br>
+Dann kann,je nach Internetverbindung, eine ganze Weile dauern.<br>
 </div>
 </body>
 </html>
