@@ -1,0 +1,151 @@
+<html>
+<head>
+<meta content="text/html; charset=ISO-8859-1"
+http-equiv="content-type">
+<title>Eigenes Custom ROM kompillieren</title>
+</head>
+<body>
+<div style="text-align: center;">
+<h1>Eigenes Custom ROM kompilieren</h1>
+</div>
+<div>Viele Leute flashen und benutzen Custom ROMs auf ihren
+Androidgeräten zwar wie selbstverständlich, wissen aber nicht wie diese
+erstellt werden.Nun ist es zwar kein Hexenwerk, dennoch sollte man die
+Grundlagen draufhaben und zumindest folgendes können:<br>
+<br>
+<ul>
+<li>Grundlegende Dinge (Geräte rooten,Bootloader entsperren,Custom
+ROM flashen,Stockfirmware flashen etc.)</li>
+<li>Wissen über den Aufbau von Android und dem Linux Kernel<br>
+</li>
+<li>Wissen über Linux-Distros (Bedienung des Terminals,Installation
+von Paketen etc.)<br>
+</li>
+<li>Grundlegende Kenntnisse in Terminal-Syntax,Make-Syntax,C,C++,Java</li>
+<li>Mit Google gut zurecht kommen :)</li>
+<li>Github beherschen<br>
+</li>
+</ul>
+<br>
+Technische Vorraussetzungen:<br>
+<ul>
+<li>Einigermaßen leistungsfähiger PC (der Buildprozess ist
+rechenaufwändig und kann, je nachdem wie schnell euer PC ist, schon ein
+paar Stunden dauern)</li>
+<li>Genug freien Speicherplatz(Für installierte Pakete+Sourcen+Build
+würde ich 70-80 GB empfehlen)<br>
+</li>
+<li>Einigermaßen schnelle Internetverbindung (Sourcen können über 15
+GB groß sein,bei einer lahmen Internetverbindung kann das ein Weilchen
+dauern)</li>
+<li>Linux-Distribution, z.B Ubuntu oder Debian (Virtuelle Maschine
+tuts auch,allerdings kann der Prozess dadurch länger dauern,geht
+notfalls auch unter Mac OSX)</li>
+<li>Genug Arbeitsspeicher(Unter 4 GB braucht ihr mit Android 5 gar
+nicht anfangen,wenn Linux nativ läuft wären 8 GB und bei ner VM 16 GB
+gut.Bei zu wenig RAM kommt es Fehlermeldungen)</li>
+<li>Und natürlich ein Androidgerät, für das am besten a)schon ein
+Custom Recovery verfügbar ist b) irgendwie schon von Entwicklern
+unterstützt wird(am besten offizieller CyanogenMod-Support bzw.
+Nexus-Gerät)</li>
+</ul>
+<br>
+So nun müsst ihr als allererstes die benötigten Pakete
+installieren.Unter Ubuntu ist dies z.B so möglich:<br>
+<br>
+<span style="font-style: italic;">sudo apt-get install&nbsp; bison
+build-essential curl flex git gnupg gperf libesd0-dev liblz4-tool
+libncurses5-dev libsdl1.2-dev libwxgtk2.8-dev libxml2 </span><code
+style="font-style: italic;"><br>
+libxml2-utils lzop openjdk-7-jdk openjdk-7-jre pngcrush schedtool
+squashfs-tools xsltproc zip zlib1g-dev</code><code
+style="color: rgb(218, 0, 0); font-style: italic;"><br>
+g++-multilib gcc-multilib lib32ncurses5-dev lib32readline-gplv2-dev
+lib32z1-dev</code><br>
+<br>
+Die rot markierten Pakete unter 64-bit Distributionen.#<br>
+Bei Java wird Version 6 für Android 4.4&gt; und Version 7 für Android
+&lt;=5.0 empfohlen.Allerdings sollte dies abwärtskompatibel sein.<br>
+<br>
+Nun braucht ihr noch ein kleines Tool von Google,was sich repo
+nennt.Hierzu folgendes im Terminal eingeben:<br>
+<pre class="prettyprint"><code style="font-style: italic;"><span
+class="pln">mkdir </span><span class="pun">~</span><span class="str">/bin</span></code><code
+style="font-style: italic;"><span class="str"></span></code><br
+style="font-style: italic;"><code style="font-style: italic;"><span
+class="str">PATH=~/</span><span class="pln">bin</span><span class="pun">:</span><span
+class="pln">$PATH</span></code><br style="font-style: italic;"><span
+style="font-style: italic;" class="pln">curl https</span><span
+style="font-style: italic;" class="pun">:</span><span
+style="font-style: italic;" class="com">//storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo</span><span
+style="font-style: italic;" class="pln"></span><br
+style="font-style: italic;"><span style="font-style: italic;"
+class="pln">chmod a</span><span style="font-style: italic;" class="pun">+</span><span
+style="font-style: italic;" class="pln">x </span><span
+style="font-style: italic;" class="pun">~</span><span
+style="font-style: italic;" class="str">/bin/</span><span
+style="font-style: italic;" class="pln">repo</span><br></pre>
+Dieses Helferlein unterstützt euch beim Runterladen der Sourcen.Nun
+müsst ihr dem Tool sagen,was für Sourcen ihr beziehen wollt.<br>
+Diese Initialisierung ist je nach ROM unterschiedlich.Vorher legt ihr
+aber noch einen Ordner an,in dem die Sourcen landen sollen und steuert
+ihn im Terminal an.<br>
+Hier mal eine kleine Übersicht für einige Bespiele:<br>
+<br>
+<br>
+<table style="text-align: left; width: 1325px; height: 175px;"
+border="1" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;">repo init -u
+https://android.googlesource.com/platform/manifest<br>
+</td>
+<td style="vertical-align: top;"><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><br>
+</td>
+<td style="vertical-align: top;"><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><br>
+</td>
+<td style="vertical-align: top;"><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><br>
+</td>
+<td style="vertical-align: top;"><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><br>
+</td>
+<td style="vertical-align: top;"><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><br>
+</td>
+<td style="vertical-align: top;"><br>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<span class=""></span>Um die Androidversion zu bestimmen setzt ihr noch
+ein -b dran und anschließend den Namen vom Zweig der jeweiligen
+Version(Bsp;CyanogenMod Android 4.4=cm-11,5.1=cm-12.1).<br>
+Nun findet ihr einen Ordner (versteckte Dateien mit STRG+H einblenden)
+names .repo<br>
+<code><span class="str"></span></code><br>
+<code><span class="str"><br>
+</span></code><br>
+<br>
+</div>
+</body>
+</html>
+
