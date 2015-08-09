@@ -34,7 +34,7 @@ Technische Vorraussetzungen:<br>
 <li>Einigermaßen leistungsfähiger PC (der Buildprozess ist
 rechenaufwändig und kann, je nachdem wie schnell euer PC ist, schon ein
 paar Stunden dauern)</li>
-<li>Genug freien Speicherplatz(Für installierte Pakete+Sourcen+Build
+<li>Genug freien Speicherplatz (Für installierte Pakete+Sourcen+Build
 würde ich 70-80 GB empfehlen)<br>
 </li>
 <li>Einigermaßen schnelle Internetverbindung (Sourcen können über 15
@@ -43,7 +43,7 @@ dauern)</li>
 <li>Linux-Distribution, z.B Ubuntu oder Debian (Virtuelle Maschine
 tuts auch,allerdings kann der Prozess dadurch länger dauern,geht
 notfalls auch unter Mac OSX)</li>
-<li>Genug Arbeitsspeicher(Unter 4 GB braucht ihr mit Android 5 gar
+<li>Genug Arbeitsspeicher (Unter 4 GB braucht ihr mit Android 5 gar
 nicht anfangen,wenn Linux nativ läuft wären 8 GB und bei ner VM 16 GB
 gut.Bei zu wenig RAM kommt es Fehlermeldungen)</li>
 <li>Und natürlich ein Androidgerät, für das am besten a)schon ein
@@ -147,7 +147,7 @@ Dort findet ihr das default manifest,in dem alle "Bestandteile"
 deklariert sind,die heruntergeladen werden.<br>
 <br>
 Der Einfachheit halber könnt ihr es so lassen,wie es ist oder einige
-(für euch) unnötige Sachen entfernen(Downloadgröße wird reduziert.<br>
+(für euch) unnötige Sachen entfernen (Downloadgröße wird reduziert.<br>
 U. a. entfernen könnt ihr,wenn ihr unter Linux arbeitet,alle Einträge
 mit ...darwin...,Docs,Samples,Generic,Goldfish...<br>
 Außerdem könnt ihr,wenn überhaupt eingetragen,unter Hardware die Sachen
@@ -160,6 +160,25 @@ Downloads festlegen,x durch eine Zahl ersetzen,Standard ist ebenfalls
 im Manifest festgelegt) die Sourcen herunterladen.<br>
 <br>
 Dann kann,je nach Internetverbindung, eine ganze Weile dauern.<br>
+<br>
+Nun braucht ihr noch ein paar geräteabhängige Sourcen.Diese legt ihr in
+der gleichen Syntanx im Local manifest fest,welches ihr ebenfalls in
+.repo plaziert.<br>
+Welche Sourcen ihr braucht und wo ihr sie herbekommt,unterscheidet sich
+je nach Gerät.<br>
+<br>
+Allgemein braucht ihr Kernel-Sourcen(die für CyanogenMod angepasst
+sind),einen Device Tree(der das Gerät beschreibt) und die binary
+bloobs(Vendor).Letzere sind Closed Source,sprich die Sourcen<br>
+stehen nicht zur Verfügung,sind aber trotzdem nötig,damit das Gerät
+betrieben werden kann.<br>
+Allerdings kann es sein,dass ihr noch zusätzliche&nbsp; Repos
+braucht.Einige Sachen werden nicht im gerätespezifischen Device Tree
+festgelegt,sondern z.B in einem Boardabhängigen oder
+CPU-Hersteller-abhängigen.<br>
+Orientiert euch am besten an local Manifests,ähnlicher Geräte und ROMs<br>
+Außerdem findet ihr in eurem Device Tree eures Gerätes häufig eine
+cm.dependencies Datei,in der die abhängigen Sourcen aufgelistet sind.
 </div>
 </body>
 </html>
